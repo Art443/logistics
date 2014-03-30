@@ -46,5 +46,36 @@ if($_SERVER('REQUEST_METHOD')=='POST'){
 
 $db_handle = mysql_connect($server, $user_name, $pass_word);
 $db_found = mysql_select_db($database, $db_handle);
+
+if ($db_found) {
+
+}else {
+$errorMessage = "Error logging on";
+}
+
+$uname = quote_smart($uname, $db_handle);
+$pword = quote_smart($pword, $db_handle);
+
+$SQL = "SELECT * FROM login WHERE L1 = $uname AND L2 = $pword";
+$result = mysql_query($SQL);
+
+if ($result) {
+
+}else {
+$errorMessage = "Error logging on";
+}
+
+$num_rows = mysql_num_rows($result);
+
+if ($num_rows > 0) {
+
+$errorMessage= "logged on ";
+
+}
+else {
+
+$errorMessage= "Invalid Logon";
+
+}
 }
 ?>

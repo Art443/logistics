@@ -1,4 +1,6 @@
-<?  //session_start();?>
+<?  //session_start();
+  include 'include/conn.php';
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,9 +13,9 @@
         $uname=$_POST['user'];
         $pword=$_POST['pass'];
         
-        $link = mysql_connect("localhost", "root", "1234");
-        $sql = "use dbvehicle";
-        $result = mysql_query($sql);
+        //$link = mysql_connect("localhost", "root", "1234");
+        //$sql = "use dbvehicle";
+        //$result = mysql_query($sql);
         
         
         //echo $uname;

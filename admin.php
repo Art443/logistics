@@ -45,7 +45,7 @@ include 'include/conn.php';
       <h3>Adminitrator
 	  </h3>
       <ul class="categories">
-        <li><span><a href="#">Brand</a></span></li>
+        <li><span><a href="show_admin.php">Brand</a></span></li>
         <li><span><a href="#">Cartype</a></span></li>
         <li><span><a href="#">Department</a></span></li>
         <li><span><a href="#">Employee</a></span></li>

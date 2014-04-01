@@ -26,7 +26,7 @@
             $result = mysql_query($sql);
             $dbarr = mysql_fetch_array($result);
             
-            //$_SESSION['sessusername'] = $dbarr[username];
+            $_SESSION['sessusername'] = $dbarr[username];
             $lic=$dbarr[licenses];
             
             if($lic==0){

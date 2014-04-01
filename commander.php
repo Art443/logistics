@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?
+include 'include/check_login.php';
+include 'include/conn.php';
+?>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>

@@ -1,5 +1,6 @@
 <?  //session_start();
   include 'include/conn.php';
+  session_start();
 ?>
 <html>
     <head>
@@ -13,27 +14,21 @@
         $uname=$_POST['user'];
         $pword=$_POST['pass'];
         
-        //$link = mysql_connect("localhost", "root", "1234");
-        //$sql = "use dbvehicle";
-        //$result = mysql_query($sql);
         
-        
-        //echo $uname;
-        //echo $pword;
-        //sql เพื่อดึงจำนวนแถวที่ตรงกับเงื่อนไข คือ ซึ่อผู้ใช้งานและรหัสผ่านที่เข้ารหัสแล้ว
         $sql = "select count(*) from tbadmin WHERE username = '$uname' AND password = '$pword';";
         $result = mysql_query($sql);
         $row = mysql_fetch_array($result);
         
         if($row[0] == 1)  //ถ้าจำนวนแถวเท่ากับ 1 แสดงว่ามีข้อมูลตามที่ผู้ใช้ล็อกอิน
         {
-            //echo "Username and Password Correct <P>";
-            //sql เพื่อดึงข้อมูลของผู้ใช้งาน
+            
             $sql="SELECT * from tbadmin WHERE username = '$uname' AND password = '$pword';";
             $result = mysql_query($sql);
             $dbarr = mysql_fetch_array($result);
+            
+            //$_SESSION['sessusername'] = $dbarr[username];
             $lic=$dbarr[licenses];
-            //echo $lic;
+            
             if($lic==0){
                 include 'admin.php';
             }else if ($lic==1){

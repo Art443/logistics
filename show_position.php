@@ -49,7 +49,7 @@ include 'include/conn.php';
         <li><span><a href="show_admin.php">Administrator</a></span></li>
         <li><span><a href="show_brand.php">Brand</a></span></li>
         <li><span><a href="show_cartype.php">Cartype</a></span></li>
-        <li><span><a href="show_department.php">Department</a></span></li>s
+        <li><span><a href="show_department.php">Department</a></span></li>
         <li><span><a href="show_employee.php">Employee</a></span></li>
         <li><span><a href="show_position.php">Position</a></span></li>
         <li><span><a href="show_rank.php">Rank</a></span></li>
@@ -60,30 +60,17 @@ include 'include/conn.php';
       <div class="inside">
        <?php
         
-        $sql = "select * from tbadmin;";
+        $sql = "select * from tbposition;";
         $result = mysql_query($sql);
-        echo "<a href=add_admin.php>เพิ่มรายการแอดมิน</a>";
-        echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
-             <tr>
-                <th width=50 align=center bgcolor=#cccccc>id</th>
-                <th width=150 align=center bgcolor=#cccccc>Username</th>
-                <th width=150 align=center bgcolor=#cccccc>Password</th>
-                <th width=150 align=center bgcolor=#cccccc>Licenses</th>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+        echo "<table width=500 border=1 cellspacing=0>            
+             <tr border=1>
+                <td width=200 align=center>รหัสตำแหน่ง</td>
+                <td width=300 align=center>ชื่อตำแหน่ง</td>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
-            echo "<tr>";         
-            echo "    <td width=50 align=center> $dbarr[admin_id]</td>";
-            echo "    <td width=150 align=center>$dbarr[username]</td>";
-            echo "    <td width=150 align=center>$dbarr[password]</td>";
-            $lic=$dbarr[licenses];
-            if($lic==0){
-                $licenses="admin";
-            }else{
-                $licenses="user";
-            }
-            echo "    <td width=150 align=center>$licenses</td>"; 
+            echo "<tr>";                 
+            echo "    <td width=200 align=center> $dbarr[position_id]</td>";
+            echo "    <td width=300 align=center>$dbarr[position_name]</td>";
           echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
           echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
         }mysql_close($link);

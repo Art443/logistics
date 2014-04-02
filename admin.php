@@ -45,20 +45,52 @@ include 'include/conn.php';
       <h3>Adminitrator
 	  </h3>
       <ul class="categories">
-        <li><span><a href="show_admin.php">Brand</a></span></li>
-        <li><span><a href="#">Cartype</a></span></li>
-        <li><span><a href="#">Department</a></span></li>
-        <li><span><a href="#">Employee</a></span></li>
-        <li><span><a href="#">Position</a></span></li>
-        <li><span><a href="#">Rank</a></span></li>
-        <li><span><a href="#">Worksheets</a></span></li>
+        <li><span><a href="show_admin.php">Administrator</a></span></li>
+        <li><span><a href="show_brand.php">Brand</a></span></li>
+        <li><span><a href="show_cartype.php">Cartype</a></span></li>
+        <li><span><a href="show_deprtment.php">Department</a></span></li>
+        <li><span><a href="show_employee.php">Employee</a></span></li>
+        <li><span><a href="show_position.php">Position</a></span></li>
+        <li><span><a href="show_rank.php">Rank</a></span></li>
+        <li><span><a href="show_worksheets">Worksheets</a></span></li>
         <li class="last"><span><a href="#">Car</a></span></li>
       </ul>
 	</aside>
       <div class="inside">
-       หน้าจอของผู้ดูแลระบบ<br>
-       <a href="insert_rank.php">เพิ่มชั้นยศ</a><br>  <a href="update_rank.php">แก้ไขชั้นยศ</a><br>  <a href="delete_rank.php">ลบชั้นยศ</a>
-     </div>
+       <?php
+        $link = mysql_connect("localhost", "root", "1234");
+        $sql = "use dbvehicle";
+        $result = mysql_query($sql);
+        $sql = "select * from tbadmin;";
+        $result = mysql_query($sql);
+        echo "<a href=add_admin.php>เพิ่มรายการแอดมิน</a>";
+        echo "<table width=680 >            
+             <tr>
+                <th width=50 align=center bgcolor=#cccccc>id</th>
+                <th width=150 align=center bgcolor=#cccccc>Username</th>
+                <th width=150 align=center bgcolor=#cccccc>Password</th>
+                <th width=150 align=center bgcolor=#cccccc>Licenses</th>
+                <th width=100 align=center bgcolor=#cccccc>Edit</th>
+                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+             </tr>";
+        while($dbarr= mysql_fetch_array($result)){       
+            echo "<tr>"; 
+            $adid=$dbarr[admin_id];
+            echo "    <td width=50 align=center> $dbarr[admin_id]</td>";
+            echo "    <td width=150 align=center>$dbarr[username]</td>";
+            echo "    <td width=150 align=center>$dbarr[password]</td>";
+            $lic=$dbarr[licenses];
+            if($lic==0){
+                $licenses="admin";
+            }else{
+                $licenses="user";
+            }
+            echo "    <td width=150 align=center>$licenses</td>"; 
+          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
+          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
+        }mysql_close($link);
+        ?>
+             </div>
     </section>
   </div>
 </div>

@@ -59,7 +59,7 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        
+        echo "<a href=insert_employee.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
         $sql = "select * from tbemployee, tbrank, tbposition where tbemployee.rank_id=tbrank.rank_id && tbemployee.position_id=tbposition.position_id;";
         $result = mysql_query($sql);
         echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
@@ -69,6 +69,8 @@ include 'include/conn.php';
                 <th width=200 align=center bgcolor=#cccccc>ชื่อกำลังพล</th>
                 <th width=200 align=center bgcolor=#cccccc>นามสกุลกำลังพล</th>
                 <th width=200 align=center bgcolor=#cccccc>ตำแหน่ง</th>
+                <th width=100 align=center bgcolor=#cccccc>Edit</th>
+                <th width=100 align=center bgcolor=#cccccc>Delete</th>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){        
             echo "<tr>";                 
@@ -77,8 +79,8 @@ include 'include/conn.php';
             echo "    <td width=200 align=center>$dbarr[employee_name]</td>";
             echo "    <td width=200 align=center>$dbarr[employee_Lastname]</td>";
             echo "    <td width=200 align=center>$dbarr[position_name]</td>";
-          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
-          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
+          echo "    <td width=100 align=center><a href=update_employee.php?adid=$dbarr[employee_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+          echo "    <td width=100 align=center><a href=delete_employee.php?adid=$dbarr[employee_id]><img src=images/delete.png width=20 heigth=20></a></td>";
         }mysql_close($link);
         ?>
              </div>

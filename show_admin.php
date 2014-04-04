@@ -49,7 +49,7 @@ include 'include/conn.php';
         <li><span><a href="show_admin.php">Administrator</a></span></li>
         <li><span><a href="show_brand.php">Brand</a></span></li>
         <li><span><a href="show_cartype.php">Cartype</a></span></li>
-        <li><span><a href="show_department.php">Department</a></span></li>s
+        <li><span><a href="show_department.php">Department</a></span></li>
         <li><span><a href="show_employee.php">Employee</a></span></li>
         <li><span><a href="show_position.php">Position</a></span></li>
         <li><span><a href="show_rank.php">Rank</a></span></li>
@@ -62,7 +62,7 @@ include 'include/conn.php';
         
         $sql = "select * from tbadmin;";
         $result = mysql_query($sql);
-        echo "<a href=add_admin.php>เพิ่มรายการแอดมิน</a>";
+        echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
         echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
              <tr>
                 <th width=50 align=center bgcolor=#cccccc>id</th>
@@ -84,8 +84,8 @@ include 'include/conn.php';
                 $licenses="user";
             }
             echo "    <td width=150 align=center>$licenses</td>"; 
-          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
-          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
+          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]><img src=images/delete.png width=20 heigth=20></a></td>";
         }mysql_close($link);
         ?>
              </div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?
+ob_start();
 //session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
-
 ?>
 <html lang="en">
 <head>
@@ -54,32 +54,53 @@ include 'include/conn.php';
         <li><span><a href="show_employee.php">Employee</a></span></li>
         <li><span><a href="show_position.php">Position</a></span></li>
         <li><span><a href="show_rank.php">Rank</a></span></li>
-        <li><span><a href="show_worksheets.php">Worksheets</a></span></li>
+        <li><span><a href="show_worksheets">Worksheets</a></span></li>
         <li class="last"><span><a href="show_car.php">Car</a></span></li>
       </ul>
 	</aside>
       <div class="inside">
        <?php
-        
-        $sql = "select * from tbbrand;";
-        $result = mysql_query($sql);
-        echo "<a href=insert_brand.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
-        echo "<table width=500 border=1 bordercolor=000000 cellspacing=0>            
-             <tr border=1>
-                <th width=200 align=center bgcolor=#cccccc>รหัสยี่ห้อรถ</th>
-                <th width=300 align=center bgcolor=#cccccc>ชื่อยี่ห้อรถ</th>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
-             </tr>";
-        while($dbarr= mysql_fetch_array($result)){       
-            echo "<tr>";                 
-            echo "    <td width=200 align=center> $dbarr[brand_id]</td>";
-            echo "    <td width=300 align=center>$dbarr[brand_name]</td>"; 
-            echo "    <td width=100 align=center><a href=update_brand.php?adid=$dbarr[brand_id]><img src=images/edit.png width=20 heigth=20></a></td>";
-          echo "    <td width=100 align=center><a href=delete_brand.php?adid=$dbarr[brand_id]><img src=images/delete.png width=20 heigth=20></a></td>";
-          
-        }mysql_close($link);
-        ?>
+if ($send == NULL){
+    ?>
+<form method="post" action="<? echo $php_self?>">
+            <table width="500" border="0">
+                <tr>
+                    <td align="Right">ID : </td>
+                    <td><input type="text" name="admin_id"></td>
+                </tr>
+                <tr>
+                    <td align="Right">Username : </td>
+                    <td><input type="text" name="username"></td>
+                </tr>  
+                <tr>
+                    <td align="Right">Password : </td>
+                    <td><input type="text" name="password"></td>
+                </tr>
+                <tr>
+                    <td align="Right">Licenses : </td>
+                    <td><input type="radio" name="licenses" value="0">admin <br> <input type="radio" name="licenses" value="1" checked>user <br> <input type="radio" name="licenses" value="2" checked>commander</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="send" value="ตกลง">
+                        <input type="reset" name="cancel" value="ยกเลิก">
+                    </td>                    
+                </tr>
+            </table>
+        </form>
+<?}
+ else {
+    
+    $sql="Insert into tbadmin values('$admin_id','$username','$password','$licenses');";
+    $result=  mysql_query($sql);
+    if ($result){
+        echo "การเพิ่มข้อมูลลงในฐานข้อมูลประสบความสำเร็จ<br>";
+        mysql_close();
+    }  else {
+        echo "ไม่สามารถเพิ่มข้อมูลใหม่ลงในฐานข้อมูลได้<br>";
+    }
+}
+?>
              </div>
     </section>
   </div>

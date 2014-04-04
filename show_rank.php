@@ -59,22 +59,23 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        
+        echo "<a href=insert_rank.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
        $sql = "select * from tbrank;";
         $result = mysql_query($sql);
         echo "<table width=500 border=1 cellspacing=0>            
              <tr border=1>
-                <td width=200 align=center>รหัสชั้นยศ</td>
-                <td width=300 align=center>ชื่อชั้นยศ</td>
-                <td width=300 align=center>Edit</td>
-                <td width=300 align=center>Delete</td>
+                <th width=200 align=center>รหัสชั้นยศ</td>
+                <th width=300 align=center>ชื่อชั้นยศ</td>
+                <th width=100 align=center bgcolor=#cccccc>Edit</th>
+                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+                
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";                 
             echo "    <td width=200 align=center> $dbarr[rank_id]</td>";
             echo "    <td width=300 align=center>$dbarr[rank_name]</td>";
-          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
-          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
+          echo "    <td width=100 align=center><a href=update_rank.php?adid=$dbarr[rank_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+          echo "    <td width=100 align=center><a href=delete_rank.php?adid=$dbarr[rank_id]><img src=images/delete.png width=20 heigth=20></a></td>";
         }mysql_close($link);
         ?>
              </div>

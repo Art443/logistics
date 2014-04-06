@@ -60,15 +60,15 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        echo "<a href=insert_cartype.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<a href=insert_cartype.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
        $sql = "select * from tbcartype;";
         $result = mysql_query($sql);
-        echo "<table width=500 border=1 bordercolor=000000 cellspacing=0>            
-             <tr border=1>
-                <th width=200 align=center bgcolor=#cccccc>รหัสประเภทรถ</th>
-                <th width=300 align=center bgcolor=#cccccc>ชื่อประเภทรถ</th>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+        echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
+             <tr>
+                <br><td width=200 align=center bgcolor=#cccccc><b>Cartype_number</b></td></br>
+                <td width=300 align=center bgcolor=#cccccc><b>Cartype_name</b></th>
+                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
+                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";                 

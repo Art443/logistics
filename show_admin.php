@@ -62,15 +62,15 @@ include 'include/conn.php';
         
         $sql = "select * from tbadmin;";
         $result = mysql_query($sql);
-        echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
-        echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
+        echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
+        echo "<table width=680 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>
-                <th width=50 align=center bgcolor=#cccccc>id</th>
-                <th width=150 align=center bgcolor=#cccccc>Username</th>
-                <th width=150 align=center bgcolor=#cccccc>Password</th>
-                <th width=150 align=center bgcolor=#cccccc>Licenses</th>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+                <br><td width=50 align=center bgcolor=#cccccc><b>ID</b></td></br>
+                <td width=150 align=center bgcolor=#cccccc><b>Username</b></td>
+                <td width=150 align=center bgcolor=#cccccc><b>Password</b></td>
+                <td width=150 align=center bgcolor=#cccccc><b>Licenses</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></td>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";         

@@ -59,15 +59,15 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        echo "<a href=insert_position.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<a href=insert_position.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
         $sql = "select * from tbposition;";
         $result = mysql_query($sql);
-        echo "<table width=500 border=1 cellspacing=0>            
-             <tr border=1>
-                <th width=200 align=center>รหัสตำแหน่ง</td>
-                <th width=300 align=center>ชื่อตำแหน่ง</td>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+        echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
+             <tr>
+                <br><td width=200 align=center bgcolor=#cccccc><b>รหัสตำแหน่ง</b></td></br>
+                <td width=300 align=center bgcolor=#cccccc><b>ชื่อตำแหน่ง</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></td>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";                 

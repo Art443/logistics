@@ -59,18 +59,18 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        echo "<a href=insert_employee.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<a href=insert_employee.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
         $sql = "select * from tbemployee, tbrank, tbposition where tbemployee.rank_id=tbrank.rank_id && tbemployee.position_id=tbposition.position_id;";
         $result = mysql_query($sql);
-        echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
-             <tr border=1>
-                <th width=100 align=center bgcolor=#cccccc>รหัสกำลังพล</th>
-                <th width=200 align=center bgcolor=#cccccc>ยศ</th>
-                <th width=200 align=center bgcolor=#cccccc>ชื่อกำลังพล</th>
-                <th width=200 align=center bgcolor=#cccccc>นามสกุลกำลังพล</th>
-                <th width=200 align=center bgcolor=#cccccc>ตำแหน่ง</th>
-                <th width=100 align=center bgcolor=#cccccc>Edit</th>
-                <th width=100 align=center bgcolor=#cccccc>Delete</th>
+        echo "<table width=680 border=1 bordercolor=#000000 cellspacing=0>            
+             <tr>
+                <br><td width=100 align=center bgcolor=#cccccc><b>รหัสกำลังพล</b></td></br>
+                <td width=200 align=center bgcolor=#cccccc><b>ยศ</b></td>
+                <td width=200 align=center bgcolor=#cccccc><b>ชื่อกำลังพล</b></td>
+                <td width=200 align=center bgcolor=#cccccc><b>นามสกุลกำลังพ</b>ล</td>
+                <td width=200 align=center bgcolor=#cccccc><b>ตำแหน่ง</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></td>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){        
             echo "<tr>";                 

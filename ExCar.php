@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <?
-//session_start();
-include 'include/check_login.php';
 include 'include/conn.php';
+$strExcelFileName="test.xls";
+header("Content-Type: application/x-msexcel; name=\"$strExcelFileName\"");
+header("Content-Disposition: inline; filename=\"$strExcelFileName\"");
+header("Pragma:no-cache");
 ?>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"xmlns:x="urn:schemas-microsoft-com:office:excel"xmlns="http://www.w3.org/TR/REC-html40">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html lang="en">
 <head>
-<title>Royal Thai Army</title>
+<title>Royal Thai Army : DownLoad Cars</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -59,28 +64,33 @@ include 'include/conn.php';
 	</aside>
       <div class="inside">
        <?php
-        echo "<a href=insert_employee.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
-        $sql = "select * from tbemployee, tbrank, tbposition where tbemployee.rank_id=tbrank.rank_id && tbemployee.position_id=tbposition.position_id;";
+        
+        $sql = "select * from tbadmin;";
         $result = mysql_query($sql);
-        echo "<table width=680 border=1 bordercolor=#000000 cellspacing=0>            
+        echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
              <tr>
-                <br><td width=100 align=center bgcolor=#cccccc><b>รหัสกำลังพล</b></td></br>
-                <td width=200 align=center bgcolor=#cccccc><b>ยศ</b></td>
-                <td width=200 align=center bgcolor=#cccccc><b>ชื่อกำลังพล</b></td>
-                <td width=200 align=center bgcolor=#cccccc><b>นามสกุลกำลังพ</b>ล</td>
-                <td width=200 align=center bgcolor=#cccccc><b>ตำแหน่ง</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></td>
+                <th width=50 align=center bgcolor=#cccccc>id</th>
+                <th width=150 align=center bgcolor=#cccccc>Username</th>
+                <th width=150 align=center bgcolor=#cccccc>Password</th>
+                <th width=150 align=center bgcolor=#cccccc>Licenses</th>
+                <th width=100 align=center bgcolor=#cccccc>Edit</th>
+                <th width=100 align=center bgcolor=#cccccc>Delete</th>
              </tr>";
-        while($dbarr= mysql_fetch_array($result)){        
-            echo "<tr>";                 
-            echo "    <td width=100 align=center>$dbarr[employee_id]</td>";
-            echo "    <td width=200 align=center>$dbarr[rank_name]</td>";
-            echo "    <td width=200 align=center>$dbarr[employee_name]</td>";
-            echo "    <td width=200 align=center>$dbarr[employee_lastname]</td>";
-            echo "    <td width=200 align=center>$dbarr[position_name]</td>";
-          echo "    <td width=100 align=center><a href=update_employee.php?adid=$dbarr[employee_id]><img src=images/edit.png width=20 heigth=20></a></td>";
-          echo "    <td width=100 align=center><a href=delete_employee.php?adid=$dbarr[employee_id]><img src=images/delete.png width=20 heigth=20></a></td>";
+        while($dbarr= mysql_fetch_array($result)){       
+            echo "<tr>";         
+            echo "    <td width=50 align=center> $dbarr[admin_id]</td>";
+            echo "    <td width=150 align=center>$dbarr[username]</td>";
+            echo "    <td width=150 align=center>$dbarr[password]</td>";
+            $lic=$dbarr[licenses];
+            if($lic==0){
+                $licenses="admin";
+            }else{
+                $licenses="user";
+            }
+            echo "    <td width=150 align=center>$licenses</td>"; 
+          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]><img src=images/delete.png width=20 heigth=20></a></td>";
         }mysql_close($link);
         ?>
              </div>

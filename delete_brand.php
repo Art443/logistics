@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?
-//session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
-
 ?>
 <html lang="en">
 <head>
@@ -41,28 +39,21 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-       <?php
-        
-        $sql = "select * from tbbrand;";
-        $result = mysql_query($sql);
-        echo "<a href=insert_brand.php><img src=images/add.png width=20 heigth=20>  Add Infomation</a>";
-        echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
-             <tr>
-                <br><td width=200 align=center bgcolor=#cccccc><b>Brand_number</b></td></br>
-                <td width=300 align=center bgcolor=#cccccc><b>Brand_name</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
-                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>
-             </tr>";
-        while($dbarr= mysql_fetch_array($result)){       
-            echo "<tr>";                 
-            echo "    <td width=200 align=center> $dbarr[brand_id]</td>";
-            echo "    <td width=300 align=center>$dbarr[brand_name]</td>"; 
-            echo "    <td width=100 align=center><a href=update_brand.php?adid=$dbarr[brand_id]><img src=images/edit.png width=20 heigth=20></a></td>";
-          echo "    <td width=100 align=center><a href=delete_brand.php?adid=$dbarr[brand_id]><img src=images/delete.png width=20 heigth=20></a></td>";
-          
-        }mysql_close($link);
-        ?>
-             </div>
+       <?
+       $sql = "Delete From tbbrand where brand_id='$adid'";
+    $result = mysql_query($sql);
+            if ($result){
+                echo"การลบข้อมูลในฐานข้อมูลประสบความสำเร็จ<br>";
+                echo "ประสงค์จะลบข้อมูลอื่น <a href=show_brand.php>คลิกที่นี่>>></a><br>";
+                echo "ประสงค์จะเพิ่มข้อมูลยี่ห้ออื่น <a href=insert_brand.php>คลิกที่นี่>>></a>";
+                 mysql_close($link);
+            }  else {
+                echo "ไม่สามารถลบข้อมูลในฐานข้อมูลได้<br>";
+                echo "ประสงค์จะลบข้อมูลอีกครั้ง <a href=show_brand.php>คลิกที่นี่>>></a>";
+            }
+   
+       ?>
+      </div>
     </section>
   </div>
 </div>

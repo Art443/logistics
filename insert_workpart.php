@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?
-ob_start();
-//session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
 ?>
@@ -41,26 +39,18 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-       <?php
+        <?php
 if ($send == NULL){
     ?>
 <form method="post" action="<? echo $php_self?>">
             <table width="500" border="0">
                 <tr>
-                    <td align="Right">ID : </td>
-                    <td><input type="text" name="admin_id"></td>
-                </tr>
-                <tr>
-                    <td align="Right">Username : </td>
-                    <td><input type="text" name="username"></td>
+                    <td align="Right">รหัสสายงาน : </td>
+                    <td><input type="text" name="workpart_id"></td>
                 </tr>  
                 <tr>
-                    <td align="Right">Password : </td>
-                    <td><input type="text" name="password"></td>
-                </tr>
-                <tr>
-                    <td align="Right">Licenses : </td>
-                    <td><input type="radio" name="licenses" value="0">admin <br> <input type="radio" name="licenses" value="1" checked>user <br> <input type="radio" name="licenses" value="2" checked>commander</td>
+                    <td align="Right">ชื่อสายงาน : </td>
+                    <td><input type="text" name="workpart_name"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -73,17 +63,19 @@ if ($send == NULL){
 <?}
  else {
     
-    $sql="Insert into tbadmin values('$admin_id','$username','$password','$licenses');";
+    $sql="Insert into tbworkpart values('$workpart_id','$workpart_name');";
     $result=  mysql_query($sql);
     if ($result){
         echo "การเพิ่มข้อมูลลงในฐานข้อมูลประสบความสำเร็จ<br>";
+        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลอีก<a href=insert_workpart.php>คลิกที่นี่</a>";
         mysql_close();
     }  else {
         echo "ไม่สามารถเพิ่มข้อมูลใหม่ลงในฐานข้อมูลได้<br>";
+        echo "ลองเพิ่มข้อมูลอีกครั้ง<a href=insert_workpart.php>คลิกที่นี่</a>";
     }
 }
-?>
-             </div>
+?> 
+      </div>
     </section>
   </div>
 </div>

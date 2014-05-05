@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+
 <?
 //session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
+
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -27,65 +29,50 @@ include 'include/conn.php';
 <!-- START PAGE SOURCE -->
 <div class="wrap">
   <header>
-    <div class="container">
-      
-      <nav>
-        <ul>
-          <li class="current"><a href="index.html" class="m1">Control Panel</a></li>
-          <li><a href="about-us.html" class="m2">Requisition</a></li>
-          <li><a href="articles.html" class="m3">Repatriate</a></li>
-          <li><a href="contact-us.html" class="m4">Maintanance</a></li>
-          <li class="last"><a href="sitemap.html" class="m5">Dispose</a></li>
-        </ul>
-      </nav>
-      
+    <div class="container">      
+      <?
+      include 'include/top_menu.php';
+      ?>      
     </div>
   </header>
   <div class="container">
     <aside>
-      <h3>Adminitrator
-	  </h3>
-      <ul class="categories">
-        <li><span><a href="show_admin.php">Administrator</a></span></li>
-        <li><span><a href="show_brand.php">Brand</a></span></li>
-        <li><span><a href="show_cartype.php">Cartype</a></span></li>
-        <li><span><a href="show_department.php">Department</a></span></li>
-        <li><span><a href="show_employee.php">Employee</a></span></li>
-        <li><span><a href="show_position.php">Position</a></span></li>
-        <li><span><a href="show_rank.php">Rank</a></span></li>
-        <li><span><a href="show_worksheets">Worksheets</a></span></li>
-        <li class="last"><span><a href="show_car.php">Car</a></span></li>
-      </ul>
-	</aside>
+        <?
+        include 'include/menu.php';
+        ?>     
+    </aside>
       <div class="inside">
        <?php
         
-        $sql = "select * from tbadmin;";
+        $sql = "select * 
+                  from tbcars, tbcartype, tbbrand
+                  where tbcars.cartype_id=tbcartype.cartype_id &&
+                        tbcars.brand_id=tbbrand.brand_id;";
         $result = mysql_query($sql);
-        echo "<a href=add_admin.php>เพิ่มรายการแอดมิน</a>";
-        echo "<table width=680 border=1 bordercolor=000000 cellspacing=0>            
-             <tr>
-                <th width=50 align=center bgcolor=#cccccc>id</th>
-                <th width=150 align=center bgcolor=#cccccc>Username</th>
-                <th width=150 align=center bgcolor=#cccccc>Password</th>
-                <th width=150 align=center bgcolor=#cccccc>Licenses</th>
+        echo "<a href=insert_cars.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<table width=500 border=1 bordercolor=000000 cellspacing=0>            
+             <tr border=1>
+                <th width=200 align=center bgcolor=#cccccc>ลำดับ</th>
+                <th width=300 align=center bgcolor=#cccccc>รายการ</th>
+                <th width=300 align=center bgcolor=#cccccc>เลขหมายทะเบียน</th>
                 <th width=100 align=center bgcolor=#cccccc>Edit</th>
                 <th width=100 align=center bgcolor=#cccccc>Delete</th>
              </tr>";
+        $i = 0 ;
         while($dbarr= mysql_fetch_array($result)){       
-            echo "<tr>";         
-            echo "    <td width=50 align=center> $dbarr[admin_id]</td>";
-            echo "    <td width=150 align=center>$dbarr[username]</td>";
-            echo "    <td width=150 align=center>$dbarr[password]</td>";
-            $lic=$dbarr[licenses];
-            if($lic==0){
-                $licenses="admin";
+            echo "<tr height=30>";
+                 $i++; 
+                echo "    <td width=200 align=center>$i</td>";
+            echo "    <td width=800 >&nbsp; $dbarr[cartype_name]&nbsp;$dbarr[brand_name]</td>";
+            if($dbarr[soilder_number]!=""){
+                $number=$dbarr[soilder_number];
             }else{
-                $licenses="user";
+                $number=$dbarr[civil_number];
             }
-            echo "    <td width=150 align=center>$licenses</td>"; 
-          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]>Edit</a></td>";
-          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]>Delete</a></td>";
+            echo "    <td width=300 align=center>$number</td>"; 
+            echo "    <td width=100 align=center><a href=update_car.php?adid=$dbarr[cars_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+            echo "    <td width=100 align=center><a href=delete_car.php?adid=$dbarr[cars_id]><img src=images/delete.png width=20 heigth=20></a></td>";
+          
         }mysql_close($link);
         ?>
              </div>

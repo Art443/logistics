@@ -27,36 +27,18 @@ include 'include/conn.php';
 <!-- START PAGE SOURCE -->
 <div class="wrap">
   <header>
-    <div class="container">
-      
-      <nav>
-        <ul>
-          <li class="current"><a href="index.html" class="m1">Control Panel</a></li>
-          <li><a href="about-us.html" class="m2">Requisition</a></li>
-          <li><a href="articles.html" class="m3">Repatriate</a></li>
-          <li><a href="contact-us.html" class="m4">Maintanance</a></li>
-          <li class="last"><a href="sitemap.html" class="m5">Dispose</a></li>
-        </ul>
-      </nav>
-      
+    <div class="container">      
+      <?
+      include 'include/top_menu.php';
+      ?>      
     </div>
   </header>
   <div class="container">
     <aside>
-      <h3>Adminitrator
-	  </h3>
-      <ul class="categories">
-        <li><span><a href="show_admin.php">Administrator</a></span></li>
-        <li><span><a href="show_brand.php">Brand</a></span></li>
-        <li><span><a href="show_cartype.php">Cartype</a></span></li>
-        <li><span><a href="show_department.php">Department</a></span></li>
-        <li><span><a href="show_employee.php">Employee</a></span></li>
-        <li><span><a href="show_position.php">Position</a></span></li>
-        <li><span><a href="show_rank.php">Rank</a></span></li>
-        <li><span><a href="show_worksheets">Worksheets</a></span></li>
-        <li class="last"><span><a href="show_car.php">Car</a></span></li>
-      </ul>
-	</aside>
+        <?
+        include 'include/menu.php';
+        ?>     
+    </aside>
       <div class="inside">
        <?php
         echo "<a href=insert_rank.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";

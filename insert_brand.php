@@ -1,7 +1,5 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <?
-ob_start();
-//session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
 ?>
@@ -13,8 +11,8 @@ include 'include/conn.php';
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <!--<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script typte="text/javascript" src="js/cufon-replace.js"></script>
+<script rtype="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript" src="js/script.js"></script>-->
 <!--[if lt IE 7]>
@@ -41,26 +39,18 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-       <?php
+        <?php
 if ($send == NULL){
     ?>
 <form method="post" action="<? echo $php_self?>">
             <table width="500" border="0">
                 <tr>
-                    <td align="Right">ID : </td>
-                    <td><input type="text" name="admin_id"></td>
-                </tr>
-                <tr>
-                    <td align="Right">Username : </td>
-                    <td><input type="text" name="username"></td>
+                    <td align="Right">รหัสยี่ห้อรถ : </td>
+                    <td><input type="text" name="brand_id"></td>
                 </tr>  
                 <tr>
-                    <td align="Right">Password : </td>
-                    <td><input type="text" name="password"></td>
-                </tr>
-                <tr>
-                    <td align="Right">Licenses : </td>
-                    <td><input type="radio" name="licenses" value="0">admin <br> <input type="radio" name="licenses" value="1" checked>user <br> <input type="radio" name="licenses" value="2" checked>commander</td>
+                    <td align="Right">ชื่อยี่ห้อรถ : </td>
+                    <td><input type="text" name="brand_name"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -73,17 +63,19 @@ if ($send == NULL){
 <?}
  else {
     
-    $sql="Insert into tbadmin values('$admin_id','$username','$password','$licenses');";
+    $sql="Insert into tbbrand values('$brand_id','$brand_name');";
     $result=  mysql_query($sql);
     if ($result){
         echo "การเพิ่มข้อมูลลงในฐานข้อมูลประสบความสำเร็จ<br>";
+        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลยี่ห้อรถอีก<a href=insert_brand.php>คลิกที่นี่</a>";
         mysql_close();
     }  else {
         echo "ไม่สามารถเพิ่มข้อมูลใหม่ลงในฐานข้อมูลได้<br>";
+        echo "ลองเพิ่มข้อมูลอีกครั้ง<a href=insert_brand.php>คลิกที่นี่</a>";
     }
 }
-?>
-             </div>
+?> 
+      </div>
     </section>
   </div>
 </div>

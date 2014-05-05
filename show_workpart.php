@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?
-//session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
-
 ?>
 <html lang="en">
 <head>
@@ -40,29 +38,28 @@ include 'include/conn.php';
         include 'include/menu.php';
         ?>     
     </aside>
+      
       <div class="inside">
-       <?php
-        
-        $sql = "select * from tbbrand;";
+       <?php        
+        $sql = "select * from tbworkpart;";
         $result = mysql_query($sql);
-        echo "<a href=insert_brand.php><img src=images/add.png width=20 heigth=20>  Add Infomation</a>";
-        echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
-             <tr>
-                <br><td width=200 align=center bgcolor=#cccccc><b>Brand_number</b></td></br>
-                <td width=300 align=center bgcolor=#cccccc><b>Brand_name</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
-                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>
+        echo "<a href=insert_workpart.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+        echo "<table width=500 border=1 bordercolor=000000>            
+             <tr border=1>
+                <th width=200 align=center bgcolor=#cccccc>รหัสสายงาน</th>
+                <th width=300 align=center bgcolor=#cccccc>ชื่อสายงาน</th>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";                 
-            echo "    <td width=200 align=center> $dbarr[brand_id]</td>";
-            echo "    <td width=300 align=center>$dbarr[brand_name]</td>"; 
-            echo "    <td width=100 align=center><a href=update_brand.php?adid=$dbarr[brand_id]><img src=images/edit.png width=20 heigth=20></a></td>";
-          echo "    <td width=100 align=center><a href=delete_brand.php?adid=$dbarr[brand_id]><img src=images/delete.png width=20 heigth=20></a></td>";
-          
+            echo "    <td width=200 align=center> $dbarr[workpart_id]</td>";
+            echo "    <td width=300 align=center>$dbarr[workpart_name]</td>";
+            echo "    <td width=100 align=center><a href=update_workpart.php?adid=$dbarr[workpart_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+            echo "    <td width=100 align=center><a href=delete_workpart.php?adid=$dbarr[workpart_id]><img src=images/delete.png width=20 heigth=20></a></td>";
+
+           
         }mysql_close($link);
         ?>
-             </div>
+      </div>
     </section>
   </div>
 </div>

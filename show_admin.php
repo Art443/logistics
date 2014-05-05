@@ -44,6 +44,7 @@ include 'include/conn.php';
         
         $sql = "select * from tbadmin;";
         $result = mysql_query($sql);
+        echo "<table width=680 border=0><tr><td align=center><h2>รายการผู้ดูแลระบบ</td></tr></table>";
         echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
         echo "<table width=680 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>

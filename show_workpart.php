@@ -40,14 +40,18 @@ include 'include/conn.php';
     </aside>
       
       <div class="inside">
-       <?php        
+       <?php 
+        echo "<table width=500 border=0><tr><td align=center><h2>รายการสายงานสิ่งอุปกรณ์</td></tr></table>";
         $sql = "select * from tbworkpart;";
         $result = mysql_query($sql);
         echo "<a href=insert_workpart.php><img src=images/add.png width=20 heigth=20>Add Infomation</a>";
+       
         echo "<table width=500 border=1 bordercolor=000000>            
              <tr border=1>
-                <th width=200 align=center bgcolor=#cccccc>รหัสสายงาน</th>
-                <th width=300 align=center bgcolor=#cccccc>ชื่อสายงาน</th>
+                <td width=200 align=center bgcolor=#cccccc><b>รหัสสายงาน</b></th>
+                <td width=300 align=center bgcolor=#cccccc><b>ชื่อสายงาน</b></th>
+                <td width=100 align=center bgcolor=#cccccc valign=middle><b>Edit</b></th>
+                <td width=100 align=center bgcolor=#cccccc valign=middle><b>Delete</b></th>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
             echo "<tr>";                 
@@ -58,6 +62,7 @@ include 'include/conn.php';
 
            
         }mysql_close($link);
+      
         ?>
       </div>
     </section>

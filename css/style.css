@@ -246,11 +246,13 @@ p {
 	margin-top:-8px;
 }
 a {
-	color:#ff7b01;
+	color:#008cc4;
 	outline:none;
+        text-decoration:none;
 }
 a:hover {
 	text-decoration:none;
+        color:#ff7b01;
 }
 h1 {
 	text-indent:-9999px;

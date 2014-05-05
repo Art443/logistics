@@ -45,11 +45,12 @@ include 'include/conn.php';
         
         $sql = "select * from tbbrand;";
         $result = mysql_query($sql);
+        echo "<table width=500 border=0><tr><td align=center><h2>รายการยี่ห้อยานพาหนะ</td></tr></table>";
         echo "<a href=insert_brand.php><img src=images/add.png width=20 heigth=20>  Add Infomation</a>";
         echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>
-                <br><td width=200 align=center bgcolor=#cccccc><b>Brand_number</b></td></br>
-                <td width=300 align=center bgcolor=#cccccc><b>Brand_name</b></td>
+                <br><td width=200 align=center bgcolor=#cccccc><b>รหัสยี่ห้อ</b></td></br>
+                <td width=300 align=center bgcolor=#cccccc><b>ชื่อยี่ห้อ</b></td>
                 <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
                 <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>
              </tr>";

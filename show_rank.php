@@ -41,12 +41,13 @@ include 'include/conn.php';
     </aside>
       <div class="inside">
        <?php
+       echo "<table width=500 border=0><tr><td align=center><h2>รายการชั้นยศ</td></tr></table>";
         echo "<a href=insert_rank.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
        $sql = "select * from tbrank;";
         $result = mysql_query($sql);
         echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>
-                <br><td width=200 align=center bgcolor=#cccccc><b>รหัสชั้นยศ</b></td></br>
+                <td width=200 align=center bgcolor=#cccccc><b>รหัสชั้นยศ</b></td>
                 <td width=300 align=center bgcolor=#cccccc><b>ชื่อชั้นยศ</b></td>
                 <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
                 <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>    

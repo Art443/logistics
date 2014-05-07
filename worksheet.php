@@ -35,8 +35,9 @@ include 'include/conn.php';
       <?  include 'include/menu_user.php';?>  
     </aside>
    <div class="inside">
+       <table width="500" border="0"><tr><td align="center"><h2>เพิ่มรายการเบิกสิ่งอุปกรณ์</h2></td></tr></table>
        <form action="show_worksheet.php" method="post">
-       <table width="500" border="1">
+       <table width="500" border="0">
            <tr>
                <td width="150" align="right" valign="middle">ที่ใบเบิก :</td>
                <td width="350"><input type="text" name="worksheet_number"></td>
@@ -101,7 +102,7 @@ include 'include/conn.php';
                <td width="150" align="right" valign="middle">ผู้มีสิทธิรับสิ่งอุปกรณ์ :</td>
                <td><select name="emp_lic_id">
                             <?php                           
-                            $sql = "select * from tbemployee where position_id like 'po5';";
+                            $sql = "select * from tbemployee;";
                             $result = mysql_query($sql);
                             while ($data = mysql_fetch_array($result) ) {
                                 echo "<option value=$data[employee_id]>$data[employee_name]</option>";                            

@@ -43,21 +43,21 @@ include 'include/conn.php';
         $result3 = mysql_query($sql3);
         $dbarr3 =  mysql_fetch_array($result3);
         
-        $sql4 = "select * from tbpart where part_id='$part_id2';";
+        $sql4 = "select * from tbemployee, tbrank where tbemployee.rank_id=tbrank.rank_id && employee_id='$emp_lic_id';";
         $result4 = mysql_query($sql4);
         $dbarr4 =  mysql_fetch_array($result4);
         
-        $sql5 = "select * from tbpart where part_id='$part_id3';";
+        $sql5 = "select * from tbemployee, tbrank where tbemployee.rank_id=tbrank.rank_id && employee_id='$emp_lic_id1';";
         $result5 = mysql_query($sql5);
         $dbarr5 =  mysql_fetch_array($result5);
         
-        $sql6 = "select * from tbpart where part_id='$part_id4';";
+        /*$sql6 = "select * from tbpart where part_id='$part_id4';";
         $result6 = mysql_query($sql6);
         $dbarr6 =  mysql_fetch_array($result6);
         
         $sql7 = "select * from tbpart where part_id='$part_id5';";
         $result7 = mysql_query($sql7);
-        $dbarr7 =  mysql_fetch_array($result7);
+        $dbarr7 =  mysql_fetch_array($result7);*/
     ?>
           <table border="1" width="920">              
               <tr colspan="13">
@@ -144,7 +144,7 @@ include 'include/conn.php';
             <tr height="30.0pt">
             	<td width="300" colspan="3" valign="middle">....................................................................................</td>
                 <td width="100"></td>
-                <td width="450" colspan="3" valign="middle">ให้..............จ.ส.อ.โชคชัย  เอกศรีวิชัย.............เป็นผู้รับแทน</td>                
+                <td width="450" colspan="3" valign="middle">ให้..............<?echo $dbarr4[rank_name]&nbsp;$dbarr4[employee_name]&nbsp;$dbarr4[employee_lastname];?>.............เป็นผู้รับแทน</td>                
             </tr>
             <tr height="30.0pt">
             	<td width="170" valign="middle">.................................................</td>

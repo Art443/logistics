@@ -28,14 +28,14 @@ include 'include/conn.php';
   <header>
     <div class="container">      
       <?
-      include 'include/top_menu.php';
+      include 'include/top_menu_user.php';
       ?>      
     </div>
   </header>
   <div class="container">
     <aside>
         <?
-        include 'include/menu.php';
+        include 'include/menu_user.php';
         ?>     
     </aside>
       
@@ -55,9 +55,9 @@ if ($send==NULL){
                   from tbcars, tbworkpart, tbcartype, tbbrand, tbdepartment
                   where tbcars.workpart_id=tbworkpart.workpart_id &&
                         tbcars.cartype_id=tbcartype.cartype_id &&
-                        tbcars.carbrand_id=tbbrand.brand_id &&
+                        tbcars.brand_id=tbbrand.brand_id &&
                         tbcars.department_id=tbdepartment.department_id &&
-            civil_number = '$id_val';";
+            soilder_number = '$id_val';";
     $result=  mysql_query($sql);
    // echo "<form action=update_rank_result.php?Empno=$id_val method=post>";
     $dbarr =  mysql_fetch_array($result);

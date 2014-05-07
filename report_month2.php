@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <?php
         include 'include/conn.php';
         include 'include/check_login.php';
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -23,37 +24,7 @@
 <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
 </head>
     <body>        
-         <?
-        $today=  getdate();
-        $ty=$today[year]+543;
-       
-        if($today[mon]==1){
-            $td="ม.ค.";
-        }elseif ($today[mon]==2) {
-            $td="ก.พ.";
-        }elseif ($today[mon]==3) {
-            $td="มี.ค.";
-        }elseif ($today[mon]==4) {
-            $td="เม.ย.";
-        }elseif ($today[mon]==5) {
-            $td="พ.ค.";
-        }elseif ($today[mon]==6) {
-            $td="มิ.ย.";
-        }elseif ($today[mon]==7) {
-            $td="ก.ค.";
-        }elseif ($today[mon]==8) {
-            $td="ส.ค.";
-        }elseif ($today[mon]==9) {
-            $td="ก.ย.";
-        }elseif ($today[mon]==10) {
-            $td="ต.ค.";
-        }elseif ($today[mon]==11) {
-            $td="พ.ย.";
-        }else{
-            $td="ธ.ค.";
-        }
-        ?>
-        <center>ผนวก ข.<br>บัญชียานพาหนะเข้ารับการตรวจ<br>ประจำเดือน ........<?echo $td;echo $ty;?>................</center>
+        <center>ผนวก ข.<br>บัญชียานพาหนะเข้ารับการตรวจ<br>ประจำเดือน ........................</center>
         <table>
             <table border="1" width="1300">
                 <td width="15.0pt" rowspan="2" align='center'>ลำดับ</td>
@@ -90,12 +61,12 @@
                    echo "<td width=150 align=center>$dbarr[military_number]</td>";
                    
                    $num=$dbarr[soilder_number];
-                        if($num=="-"){
+                        if($num==null){
                             $number=$dbarr[civil_number];
                         }else{
                             $number=$dbarr[soilder_number];
                         }
-                   echo "<td width=50 align=center>$number</td>";
+                   echo "<td width=15 align=center>$number</td>";
                    
                    $sta=$dbarr[cars_status];
                         if($sta==0){
@@ -142,8 +113,6 @@
                    }mysql_close($link);
              
              ?>
-            
         </table>
-            <table width="1300" border="0"><tr><td align="right"><a href=exreport_month.php><img src=images/print.png width=20 heigth=20> Export Document</a></td></tr></table>    
     </body>
 </html>

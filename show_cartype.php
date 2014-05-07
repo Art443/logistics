@@ -48,7 +48,7 @@ include 'include/conn.php';
         $result = mysql_query($sql);
         echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>
-                <br><td width=200 align=center bgcolor=#cccccc><b>รหัสประเภทรถ</b></td></br>
+                <td width=200 align=center bgcolor=#cccccc><b>รหัสประเภทรถ</b></td>
                 <td width=300 align=center bgcolor=#cccccc><b>ชื่อประเภทรถ</b></th>
                 <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
                 <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>

@@ -27,30 +27,12 @@ include 'include/conn.php';
 <div class="wrap">
   <header>
     <div class="container">
-      
-      <nav>
-        <ul>
-          <li class="current"><a href="index.html" class="m1"></a></li>
-          <li><a href="about-us.html" class="m2">Requisition</a></li>
-          <li><a href="articles.html" class="m3">Repatriate</a></li>
-          <li><a href="contact-us.html" class="m4">Maintanance</a></li>
-          <li class="last"><a href="sitemap.html" class="m5">Dispose</a></li>
-        </ul>
-      </nav>
-      
+      <?  include 'include/top_menu_user.php';?>      
     </div>
   </header>
   <div class="container">
     <aside>
-      <h3>User
-	  </h3>
-      <ul class="categories">
-        <li><span><a href="#">Worksheets</a></span></li>
-        <li><span><a href="#">รายงานประจำเดือน</a></span></li>
-        <li><span><a href="#">Bettery</a></span></li>
-        <li><span><a href="#">Wheel</a></span></li>
-        <li class="last"><span><a href="#">Status_Car</a></span></li>
-      </ul>
+      <?  include 'include/menu_user.php';?>  
 	</aside>
     </section>
   </div>

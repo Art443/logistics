@@ -39,6 +39,7 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
+          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการชั้นยศ</td></tr></table>
           <?php
 if ($send==NULL){
 

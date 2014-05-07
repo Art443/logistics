@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+
 <?
 //session_start();
 include 'include/check_login.php';
 include 'include/conn.php';
+
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -42,33 +44,26 @@ include 'include/conn.php';
       <div class="inside">
        <?php
         
-        $sql = "select * from tbadmin;";
+        $sql = "select * from tbpart;";
         $result = mysql_query($sql);
-        echo "<table width=680 border=0><tr><td align=center><h2>รายการผู้ดูแลระบบ</td></tr></table>";
-        echo "<a href=insert_admin.php><img src=images/add.png width=20 heigth=20> Add Infomation</a>";
-        echo "<table width=680 border=1 bordercolor=#000000 cellspacing=0>            
+        echo "<table width=500 border=0><tr><td align=center><h2>รายการชิ้นส่วนอะไหล่</td></tr></table>";
+        echo "<a href=insert_part.php><img src=images/add.png width=20 heigth=20>  Add Infomation</a>";
+        echo "<table width=500 border=1 bordercolor=#000000 cellspacing=0>            
              <tr>
-                <td width=50 align=center bgcolor=#cccccc><b>ID</b></td>
-                <td width=150 align=center bgcolor=#cccccc><b>Username</b></td>
-                <td width=150 align=center bgcolor=#cccccc><b>Password</b></td>
-                <td width=150 align=center bgcolor=#cccccc><b>Licenses</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></td>
-                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></td>
+                <td width=200 align=center bgcolor=#cccccc><b>รหัสชิ้นส่วนอะไหล่</b></td>
+                <td width=300 align=center bgcolor=#cccccc><b>ชื่อชิ้นส่วนอะไหล่</b></td>
+                <td width=300 align=center bgcolor=#cccccc><b>หน่วยนับ</b></td>
+                <td width=100 align=center bgcolor=#cccccc><b>Edit</b></th>
+                <td width=100 align=center bgcolor=#cccccc><b>Delete</b></th>
              </tr>";
         while($dbarr= mysql_fetch_array($result)){       
-            echo "<tr>";         
-            echo "    <td width=50 align=center> $dbarr[admin_id]</td>";
-            echo "    <td width=150 align=center>$dbarr[username]</td>";
-            echo "    <td width=150 align=center>$dbarr[password]</td>";
-            $lic=$dbarr[licenses];
-            if($lic==0){
-                $licenses="admin";
-            }else{
-                $licenses="user";
-            }
-            echo "    <td width=150 align=center>$licenses</td>"; 
-          echo "    <td width=100 align=center><a href=update_admin.php?adid=$dbarr[admin_id]><img src=images/edit.png width=20 heigth=20></a></td>";
-          echo "    <td width=100 align=center><a href=delete_admin.php?adid=$dbarr[admin_id]><img src=images/delete.png width=20 heigth=20></a></td>";
+            echo "<tr>";                 
+            echo "    <td width=200 align=center> $dbarr[part_id]</td>";
+            echo "    <td width=300 align=center>$dbarr[part_name]</td>"; 
+            echo "    <td width=100 align=center>$dbarr[part_count]</td>";
+            echo "    <td width=100 align=center><a href=update_part.php?adid=$dbarr[part_id]><img src=images/edit.png width=20 heigth=20></a></td>";
+          echo "    <td width=100 align=center><a href=delete_part.php?adid=$dbarr[part_id]><img src=images/delete.png width=20 heigth=20></a></td>";
+          
         }mysql_close($link);
         ?>
              </div>

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <?
 include 'include/check_login.php';
 include 'include/conn.php';
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -26,30 +26,34 @@ include 'include/conn.php';
 <!-- START PAGE SOURCE -->
 <div class="wrap">
   <header>
-    <div class="container">
-      
-      <nav>
-        <ul>
-          <li class="current"><a href="#" class="m1"></a></li>
-          <li><a href="#" class="m2"></a></li>
-          <li><a href="#" class="m3"></a></li>
-          <li><a href="#" class="m4"></a></li>
-          <li><a href="#" class="m5"></a></li>
-          <li class="last"><a href="commander.html" class="m6">รายงาน</a></li>
-        </ul>
-      </nav>
-      
+    <div class="container">      
+      <?
+      include 'include/top_menu.php';
+      ?>      
     </div>
   </header>
   <div class="container">
     <aside>
-      <h3>Commander
-	  </h3>
-      <ul class="categories">
-        <li><span><a href="#">รายงานการซ่อม</a></span></li>
-        <li><span><a href="#">รายงานประจำเดือน</a></span></li>
-      </ul>
-	</aside>
+        <?
+        include 'include/menu.php';
+        ?>     
+    </aside>
+      <div class="inside">
+       <?
+       $sql = "Delete From tbpart where part_id='$adid'";
+    $result = mysql_query($sql);
+            if ($result){
+                echo"การลบข้อมูลในฐานข้อมูลประสบความสำเร็จ<br>";
+                echo "ประสงค์จะลบข้อมูลอื่น <a href=show_part.php>คลิกที่นี่>>></a><br>";
+                echo "ประสงค์จะเพิ่มข้อมูลยี่ห้ออื่น <a href=insert_part.php>คลิกที่นี่>>></a>";
+                 mysql_close($link);
+            }  else {
+                echo "ไม่สามารถลบข้อมูลในฐานข้อมูลได้<br>";
+                echo "ประสงค์จะลบข้อมูลอีกครั้ง <a href=show_part.php>คลิกที่นี่>>></a>";
+            }
+   
+       ?>
+      </div>
     </section>
   </div>
 </div>

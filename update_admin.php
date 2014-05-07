@@ -39,6 +39,7 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
+          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการผู้ดูแลระบบ</td></tr></table>
           <?php
 if ($send==NULL){
 
@@ -47,27 +48,34 @@ echo "<form method=post action=$php_self>";
     $result=  mysql_query($sql);
     
     $dbarr =  mysql_fetch_array($result);
-    echo "รหัส : ".$adid."<br>";
-    echo " User: ";
-    echo "<input type=text name=Euser Value=$dbarr[username]><br>";
-    echo " Password: ";
-    echo "<input type=text name=Epass Value=$dbarr[password]><br>";
-    echo "Licenses: ";
-    $lic=$dbarr[licenses];
-   
-            if($lic==0){
-                echo "<input type=radio name=Elic Value=0 checked=true>admin 
-                      <input type=radio name=Elic Value=1>user
-                      <input type=radio name=Elic Value=2>commander<br>";
-            }elseif($lic=1){
-                echo "<input type=radio name=Elic Value=0>admin 
-                      <input type=radio name=Elic Value=1 checked=true>user
-                      <input type=radio name=Elic Value=2>commander<br><br>";
+    echo "<table width=500 border=0>
+            <tr>
+                <td width=150>รหัส :</td><td width=350 colspan=3>$adid</td>
+            </tr>
+            <tr>
+                <td width=150>User :</td><td width=350 colspan=3><input type=text name=Euser Value=$dbarr[username]></td>
+            </tr>
+            <tr>
+                <td width=150>Password :</td><td width=350 colspan=3><input type=text name=Epass Value=$dbarr[password]></td>
+            </tr>
+            <tr>
+                <td width=150>Licenses :</td>";
+                $lic=$dbarr[licenses];
+                if($lic==0){
+                echo "<td><input type=radio name=Elic Value=0 checked=true>admin </td>
+                      <td><input type=radio name=Elic Value=1>user</td>
+                      <td><input type=radio name=Elic Value=2>commander</td>";
+            }elseif($lic==1){
+                echo "<td><input type=radio name=Elic Value=0>admin</td> 
+                      <td><input type=radio name=Elic Value=1 checked=true>user</td>
+                      <td><input type=radio name=Elic Value=2>commander</td>";
             }else{
-                echo "<input type=radio name=Elic Value=0>admin 
-                      <input type=radio name=Elic Value=1>user
-                      <input type=radio name=Elic Value=2 checked=true>commander<br>";
+                echo "<td><input type=radio name=Elic Value=0>admin</td> 
+                      <td><input type=radio name=Elic Value=1>user</td>
+                      <td><input type=radio name=Elic Value=2 checked=true>commander</td>";
             }
+    echo        "</tr>";
+    echo"      </table>";
     
     echo "<input type=submit name=send value=submit>";
     echo "<input type=reset name=reset value=cancel>";

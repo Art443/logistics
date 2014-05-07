@@ -1,4 +1,3 @@
-
 <?
 include 'include/check_login.php';
 include 'include/conn.php';
@@ -40,33 +39,33 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการยี่ห้อยานพาหนะ</td></tr></table>
+          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการชิ้นส่วนอะไหล่</td></tr></table>
           <?php
 if ($send==NULL){
 
 echo "<form method=post action=$php_self>";
-    $sql= "select * from tbbrand where brand_id = '$adid';";
+    $sql= "select * from tbpart where part_id = '$adid';";
     $result=  mysql_query($sql);
     
     $dbarr =  mysql_fetch_array($result);
-    echo "รหัสยี่ห้อรถ: ".$adid."<br>";
-    echo "ชื่อยี่ห้อรถ: ";
-    echo "<input type=text name=Ename Value=$dbarr[brand_name]><br>";
+    echo "รหัสชิ้นส่วนอะไหล่ : ".$adid."<br>";
+    echo "ชื่อชิ้นส่วนอะไหล่ : <input type=text name=Ename Value=$dbarr[part_name]><br>";
+    echo "หน่วยนับ : <input type=text name=Ecount Value=$dbarr[part_count]><br>";
     
     echo "<input type=submit name=send value=submit>";
     echo "<input type=reset name=reset value=cancel>";
     echo "</form>";
 }  else {
     
-    $sql = "update tbbrand set brand_name='$Ename' where brand_id='$adid'";
+    $sql = "update tbpart set part_name='$Ename', part_count='$Ecount' where part_id='$adid'";
         $result = mysql_query($sql);
             if ($result){
                 echo"การแก้ไขข้อมูลในฐานข้อมูลประสบความสำเร็จ<br>";
-                echo "ประสงค์จะแก้ไขข้อมูลเพิ่มเติม <a href=show_brand.php>คลิกที่นี่>>></a>";
+                echo "ประสงค์จะแก้ไขข้อมูลเพิ่มเติม <a href=show_part.php>คลิกที่นี่>>></a>";
                  mysql_close($link);
             }  else {
                 echo "ไม่สามารถแก้ไขข้อมูลในฐานข้อมูลได้<br>";
-                echo "ประสงค์จะแก้ไขข้อมูลอีกครั้ง <a href=show_brand.php>คลิกที่นี่>>></a>";
+                echo "ประสงค์จะแก้ไขข้อมูลอีกครั้ง <a href=show_part.php>คลิกที่นี่>>></a>";
             }
    //mysql_close($link);
    

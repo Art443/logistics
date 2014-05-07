@@ -1,4 +1,4 @@
-e<!DOCTYPE html>
+<!DOCTYPE html>
 <?
 include 'include/check_login.php';
 include 'include/conn.php';
@@ -39,6 +39,7 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
+          <table width=500 border=0><tr><td align=center><h2>เพิ่มรายการยี่ห้อยานพาหนะ</td></tr></table>
         <?php
 if ($send == NULL){
     ?>
@@ -67,7 +68,7 @@ if ($send == NULL){
     $result=  mysql_query($sql);
     if ($result){
         echo "การเพิ่มข้อมูลลงในฐานข้อมูลประสบความสำเร็จ<br>";
-        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลยี่ห้อรถอีก<a href=insert_brand.php>คลิกที่นี่</a>";
+        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลอีก<a href=insert_brand.php>คลิกที่นี่</a>";
         mysql_close();
     }  else {
         echo "ไม่สามารถเพิ่มข้อมูลใหม่ลงในฐานข้อมูลได้<br>";

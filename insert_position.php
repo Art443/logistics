@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+
 <?
 include 'include/check_login.php';
 include 'include/conn.php';
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -11,8 +12,8 @@ include 'include/conn.php';
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <!--<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script typte="text/javascript" src="js/cufon-replace.js"></script>
+<script rtype="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript" src="js/script.js"></script>-->
 <!--[if lt IE 7]>
@@ -39,19 +40,19 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-          <table width=500 border=0><tr><td align=center><h2>เพิ่มรายการประเภทยานพาหนะ</td></tr></table>
+          <table width=500 border=0><tr><td align=center><h2>เพิ่มรายการตำแหน่ง</td></tr></table>
         <?php
 if ($send == NULL){
     ?>
 <form method="post" action="<? echo $php_self?>">
             <table width="500" border="0">
                 <tr>
-                    <td align="Right">รหัสประเภทรถ : </td>
-                    <td><input type="text" name="cartype_id"></td>
+                    <td align="Right">รหัสตำแหน่ง : </td>
+                    <td><input type="text" name="position_id"></td>
                 </tr>  
                 <tr>
-                    <td align="Right">ชื่อประเภทรถ : </td>
-                    <td><input type="text" name="cartype_name"></td>
+                    <td align="Right">ชื่อตำแหน่ง : </td>
+                    <td><input type="text" name="position_name"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -64,19 +65,19 @@ if ($send == NULL){
 <?}
  else {
     
-    $sql="Insert into tbcartype values('$cartype_id','$cartype_name');";
+    $sql="Insert into tbposition values('$position_id','$position_name');";
     $result=  mysql_query($sql);
     if ($result){
         echo "การเพิ่มข้อมูลลงในฐานข้อมูลประสบความสำเร็จ<br>";
-        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลประเภทรถ ใหม่<a href=insert_cartype.php>คลิกที่นี่</a>";
+        echo "ถ้ามีความประสงค์จะเพิ่มข้อมูลอีก<a href=insert_position.php>คลิกที่นี่</a>";
         mysql_close();
     }  else {
         echo "ไม่สามารถเพิ่มข้อมูลใหม่ลงในฐานข้อมูลได้<br>";
-        echo "ลองเพิ่มข้อมูลอีกครั้ง<a href=insert_cartype.php>คลิกที่นี่</a>";
+        echo "ลองเพิ่มข้อมูลอีกครั้ง<a href=insert_position.php>คลิกที่นี่</a>";
     }
 }
 ?> 
-             </div>
+      </div>
     </section>
   </div>
 </div>

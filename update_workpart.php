@@ -1,9 +1,8 @@
-
+<!DOCTYPE html>
 <?
 include 'include/check_login.php';
 include 'include/conn.php';
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Royal Thai Army</title>
@@ -40,33 +39,33 @@ include 'include/conn.php';
         ?>     
     </aside>
       <div class="inside">
-          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการยี่ห้อยานพาหนะ</td></tr></table>
+          <table width=500 border=0><tr><td align=center><h2>แก้ไขรายการสายงานสิ่งอุปกรณ์</td></tr></table>
           <?php
 if ($send==NULL){
 
 echo "<form method=post action=$php_self>";
-    $sql= "select * from tbbrand where brand_id = '$adid';";
+    $sql= "select * from tbworkpart where workpart_id = '$adid';";
     $result=  mysql_query($sql);
     
     $dbarr =  mysql_fetch_array($result);
-    echo "รหัสยี่ห้อรถ: ".$adid."<br>";
-    echo "ชื่อยี่ห้อรถ: ";
-    echo "<input type=text name=Ename Value=$dbarr[brand_name]><br>";
+    echo "รหัสสายงาน: ".$adid."<br>";
+    echo "ชื่อสายงาน: ";
+    echo "<input type=text name=Ename Value=$dbarr[workpart_name]><br>";
     
     echo "<input type=submit name=send value=submit>";
     echo "<input type=reset name=reset value=cancel>";
     echo "</form>";
 }  else {
     
-    $sql = "update tbbrand set brand_name='$Ename' where brand_id='$adid'";
+    $sql = "update tbworkpart set workpart_name='$Ename' where workpart_id='$adid'";
         $result = mysql_query($sql);
             if ($result){
                 echo"การแก้ไขข้อมูลในฐานข้อมูลประสบความสำเร็จ<br>";
-                echo "ประสงค์จะแก้ไขข้อมูลเพิ่มเติม <a href=show_brand.php>คลิกที่นี่>>></a>";
+                echo "ประสงค์จะแก้ไขข้อมูลเพิ่มเติม <a href=show_workpart.php>คลิกที่นี่>>></a>";
                  mysql_close($link);
             }  else {
                 echo "ไม่สามารถแก้ไขข้อมูลในฐานข้อมูลได้<br>";
-                echo "ประสงค์จะแก้ไขข้อมูลอีกครั้ง <a href=show_brand.php>คลิกที่นี่>>></a>";
+                echo "ประสงค์จะแก้ไขข้อมูลอีกครั้ง <a href=show_workpart.php>คลิกที่นี่>>></a>";
             }
    //mysql_close($link);
    

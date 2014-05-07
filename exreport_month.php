@@ -1,4 +1,8 @@
 <?php
+        $strExcelFileName="report_month.xls";
+        header("Content-Type: application/x-msexcel; name=\"$strExcelFileName\"");
+        header("Content-Disposition: inline; filename=\"$strExcelFileName\"");
+        header("Pragma:no-cache");
         include 'include/conn.php';
         include 'include/check_login.php';
 ?>
@@ -22,8 +26,8 @@
 <![endif]-->
 <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
 </head>
-    <body>        
-         <?
+    <body>
+       <?
         $today=  getdate();
         $ty=$today[year]+543;
        
@@ -144,6 +148,6 @@
              ?>
             
         </table>
-            <table width="1300" border="0"><tr><td align="right"><a href=exreport_month.php><img src=images/print.png width=20 heigth=20> Export Document</a></td></tr></table>    
+               
     </body>
 </html>

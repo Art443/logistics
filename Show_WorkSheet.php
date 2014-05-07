@@ -51,6 +51,34 @@ include 'include/conn.php';
         $result5 = mysql_query($sql5);
         $dbarr5 =  mysql_fetch_array($result5);
         
+        $today=  getdate();
+        $ty=$today[year]+543;
+       
+        if($today[mon]==1){
+            $td="ม.ค.";
+        }elseif ($today[mon]==2) {
+            $td="ก.พ.";
+        }elseif ($today[mon]==3) {
+            $td="มี.ค.";
+        }elseif ($today[mon]==4) {
+            $td="เม.ย.";
+        }elseif ($today[mon]==5) {
+            $td="พ.ค.";
+        }elseif ($today[mon]==6) {
+            $td="มิ.ย.";
+        }elseif ($today[mon]==7) {
+            $td="ก.ค.";
+        }elseif ($today[mon]==8) {
+            $td="ส.ค.";
+        }elseif ($today[mon]==9) {
+            $td="ก.ย.";
+        }elseif ($today[mon]==10) {
+            $td="ต.ค.";
+        }elseif ($today[mon]==11) {
+            $td="พ.ย.";
+        }else{
+            $td="ธ.ค.";
+        }
         /*$sql6 = "select * from tbpart where part_id='$part_id4';";
         $result6 = mysql_query($sql6);
         $dbarr6 =  mysql_fetch_array($result6);
@@ -151,9 +179,9 @@ include 'include/conn.php';
                 <td width="30"></td>
                 <td width ="100" valign="middle">..............................</td>
                 <td width="50"></td>
-                <td width="250" valign="middle">.............................................................</td>
+                <td width="250" valign="middle">...<?echo $dbarr[rank_name];?>..........................................................</td>
                 <td width="50"></td>
-                <td width="200" valign="middle">.........................................</td>
+                <td width="200" valign="middle">...............<?echo $td;echo $ty;?>.........................</td>
             </tr>
             <tr height="30.0pt">
             	<td width="170" align="center" valign="middle">(ลงนาม)ผู้ตรวจสอบ</td>
